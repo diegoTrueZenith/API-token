@@ -1,6 +1,7 @@
 import Cors from 'cors';
+import { NextApiRequest, NextApiResponse } from "next";
 
-export default function handler(req, res) {
+export default function (req: NextApiRequest, res: NextApiResponse){
     // Initialize the cors middleware
     const cors = Cors({
       methods: ['GET', 'POST', 'PUT', 'DELETE'],
