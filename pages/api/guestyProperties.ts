@@ -7,7 +7,7 @@ async function fetchData() {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        timeout: '10000',
+        timeout: '50000',
         authorization: 'Bearer ' + token
       }
     };
