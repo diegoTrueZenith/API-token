@@ -1,6 +1,6 @@
 import { token } from './token';
 
-let properties;
+let guests;
 
 async function fetchData() {
     const options = {
@@ -13,10 +13,9 @@ async function fetchData() {
     };
     
     try {
-      const response = await fetch('https://open-api.guesty.com/v1/listings', options);
+      const response = await fetch('https://open-api.guesty.com/v1/guests-crud?columns=guestEmail%20id&skip=0', options)
       const data = await response.json();
-      console.log(data);
-      properties = data
+      guests = data
     } catch (error) {
       console.error(error);
     }
@@ -24,5 +23,5 @@ async function fetchData() {
 
 export default function handler(req, res) {
     fetchData();
-    res.status(200).json({ data: properties})
+    res.status(200).json({ data: guests})    
 }
