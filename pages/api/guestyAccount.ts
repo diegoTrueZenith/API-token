@@ -16,7 +16,7 @@ async function fetchData() {
       const response = await fetch('https://open-api.guesty.com/v1/guests-crud?columns=fullName%20id', options);
       const data = await response.json();
       console.log(data);
-      properties = data
+      properties = JSON.stringify(properties);
     } catch (error) {
       console.error(error);
     }
