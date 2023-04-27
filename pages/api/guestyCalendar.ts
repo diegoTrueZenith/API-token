@@ -22,7 +22,6 @@ export default function handler(req, res) {
       
       fetch('https://open-api.guesty.com/v1/availability-pricing/api/calendar/listings/'+ propertyID +'?startDate=' + todayte + '&endDate=' + nextYear, options)
       .then(response => response.json())
-      // .then(response => console.log(response))
       .then(response => res.status(200).json({ response }));
     } catch (error) {
       console.error(error);
