@@ -11,14 +11,14 @@ import { token } from "./token";
           },
           body: JSON.stringify({
             guest: {
-              firstName: name,
-              lastName: lastName,
-              phone: phone,
-              email: email
+              firstName: 'Diego',
+              lastName: 'Espinosa',
+              phone: '9999088639',
+              email: 'espinosa9mx@gmail.com'
             },
-            listingId: propertyID,
-            checkInDateLocalized: checkIn,
-            checkOutDateLocalized: checkOut,
+            listingId: '627c1f09c01e3a00346b803b',
+            checkInDateLocalized: '2023-05-01',
+            checkOutDateLocalized: '2023-05-10',
             status: 'confirmed'
           })
         };
