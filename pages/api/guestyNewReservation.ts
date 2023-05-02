@@ -16,7 +16,7 @@ export default function handler(req, res) {
     },
     body: JSON.stringify({
       money: {fareAccommodation: 120, currency: 'USD'},
-      guest: {firstName: name, phone: phone, email: email},
+      guest: {firstName: name , lastName, phone: phone, email: email},
       listingId: propertyID,
       checkInDateLocalized: checkIn,
       checkOutDateLocalized: checkOut,
