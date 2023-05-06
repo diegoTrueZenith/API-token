@@ -15,7 +15,6 @@ export default function handler(req, res) {
       authorization: 'Bearer ' + token
     },
     body: JSON.stringify({
-      money: {fareAccommodation: 120, currency: 'USD'},
       guest: {firstName: name , lastName, phone: phone, email: email},
       listingId: propertyID,
       checkInDateLocalized: checkIn,
@@ -26,7 +25,7 @@ export default function handler(req, res) {
   
   fetch('https://open-api.guesty.com/v1/reservations', options)
     .then(response => response.json())
-    .then(response => console.log(response))
+    .then(response => console.log(response.id))
     .catch(err => console.error(err));
   }
   res.status(200).json( "done" );
