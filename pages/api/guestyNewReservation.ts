@@ -23,12 +23,14 @@ export default function handler(req, res) {
     })
   };
   
+  // let reservationID;
   fetch('https://open-api.guesty.com/v1/reservations', options)
     .then(response => response.json())
-    .then(response => console.log(response.id))
+    // .then(response => reservationID = response.id)
     .catch(err => console.error(err));
   }
   res.status(200).json( "done" );
+
 }
 
 
