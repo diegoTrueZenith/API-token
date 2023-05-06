@@ -5,7 +5,7 @@ export default function handler(req, res) {
 
   const { name, lastName, email, phone, checkIn, checkOut, propertyID } = req.body; 
 
-  if(name && lastName && email && phone && checkIn && checkOut && propertyID){
+  if(name && lastName && email && phone && checkIn && checkOut && propertyID ){
 
   const options = {
     method: 'POST',
@@ -23,13 +23,17 @@ export default function handler(req, res) {
     })
   };
   
-  // let reservationID;
   fetch('https://open-api.guesty.com/v1/reservations', options)
     .then(response => response.json())
-    // .then(response => reservationID = response.id)
+    .then(response => console.log(response.id))
     .catch(err => console.error(err));
   }
+
+  
   res.status(200).json( "done" );
+
+
+
 
 }
 
