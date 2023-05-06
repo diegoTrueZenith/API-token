@@ -1,11 +1,12 @@
+import { useState } from 'react';
 import { token } from './token';
 
 
 export default function handler(req, res) {  
 
-  const { name, lastName, email, phone, checkIn, checkOut, propertyID} = req.body; 
+  const { name, lastName, email, phone, checkIn, checkOut, propertyID, paid} = req.body; 
 
-  if(name && lastName && email && phone && checkIn && checkOut && propertyID){
+  if(name && lastName && email && phone && checkIn && checkOut && propertyID && paid){
   const options = {
     method: 'POST',
     headers: {
@@ -22,11 +23,24 @@ export default function handler(req, res) {
     })
   };
 
+  const options2 = {
+    method: 'POST',
+    headers: {
+      accept: 'application/json',
+      'content-type': 'application/json',
+      authorization: 'Bearer ' + token
+    },
+    body: JSON.stringify({paymentMethod: {method: 'CASH'}, amount: paid})
+  };
+
+  console.log("*** PAID : " +paid);
+  
+
+
   fetch('https://open-api.guesty.com/v1/reservations', options)
     .then(response => response.json())
-    .then(response => console.log(response))
+    .then(response => fetch('https://open-api.guesty.com/v1/reservations/'+ response.id +'/payments', options2))
     .catch(err => console.error(err));
-
   }
 
   res.status(200).json( "done" );
