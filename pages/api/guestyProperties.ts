@@ -13,7 +13,6 @@ export default function handler(req, res) {
       fetch('https://open-api.guesty.com/v1/listings', options)
       .then(response => response.json())
       .then(response => res.status(200).json({ response}))
-      // .then(response => console.log(response));
     } catch (error) {
       console.error(error);
     }
