@@ -35,14 +35,14 @@ export default async function handler(req, res) {
       body: requestData
     })
     .then(response => response.json())
-    .then(response => updateToken(response.access_token))
+    .then(response => updateToken(response))
     .then(response => res.status(200).json(response))
     .catch(error => console.log(error))
 
 
     async function updateToken(token){
         console.log("=== NEW TOKEN UPDATED  ===");
-        await updateDoc(tokenRef, {token: token});
+        await updateDoc(tokenRef, {token: token.access_token});
         console.log(token);
     }
 }
