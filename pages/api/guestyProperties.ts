@@ -35,7 +35,16 @@ export default async function handler(req, res) {
       let response;
       fetch('https://open-api.guesty.com/v1/listings', options)
       .then(response => response.json())
-      .then(response => res.status(200).json({ response}))
+      .then(response=>{
+        if(response.error){
+          console.log("Get New Token");
+          fetch('https://vercel.com/diegotruezenith/api-token/getToken');
+          res.status(200).json("reload")
+        } else {
+          res.status(200).json({response})
+        }
+      })
+      
     } catch (error) {
       console.error(error);
     }
