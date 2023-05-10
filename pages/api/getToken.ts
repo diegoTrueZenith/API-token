@@ -22,8 +22,8 @@ export default async function handler(req, res) {
     const requestData = new URLSearchParams({
       grant_type: 'client_credentials',
       scope: 'open-api',
-      client_secret: 'QK-KbMRRa9yAmZOk-9MTLjztgcXSb4TbGV4ZYiH5',
-      client_id: '0oa9ht8ot0FG1Lr0S5d7'
+      client_secret: 'lpYdafRstAAbsbigc5nXVgCtn9gYbHyO8__HJNk-',
+      client_id: '0oa9htbbrp0JvdKK05d7'
     });
 
     fetch(url, {
