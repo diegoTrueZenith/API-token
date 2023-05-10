@@ -22,8 +22,8 @@ export default async function handler(req, res) {
     const requestData = new URLSearchParams({
       grant_type: 'client_credentials',
       scope: 'open-api',
-      client_secret: 'lpYdafRstAAbsbigc5nXVgCtn9gYbHyO8__HJNk-',
-      client_id: '0oa9htbbrp0JvdKK05d7'
+      client_secret: 'y3Wme_Lw_A-f_rlNhmh3qdzmkmASP_LH97HABD_Q',
+      client_id: '0oa9htl7pf6VsHTaU5d7'
     });
 
     fetch(url, {
@@ -40,8 +40,9 @@ export default async function handler(req, res) {
     .catch(error => console.log(error))
 
 
-    async function updateToken(token){
+    async function updateToken(tokenJSON){
         console.log("=== NEW TOKEN UPDATED  ===");
+        let token = tokenJSON.access_token;
         await updateDoc(tokenRef, {token: token});
         console.log(token);
     }
