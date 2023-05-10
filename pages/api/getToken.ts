@@ -35,7 +35,7 @@ export default async function handler(req, res) {
       body: requestData
     })
     .then(response => response.json())
-    .then(response => updateToken(response))
+    .then(response => updateToken(response.access_token))
     .then(response => res.status(200).json(response))
     .catch(error => console.log(error))
 
