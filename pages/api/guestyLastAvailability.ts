@@ -1,9 +1,23 @@
-import { token } from "./token";
+import { initializeApp } from "firebase/app";
+import { firebaseConfig } from "../firebase";
+const app = initializeApp(firebaseConfig);
+import {doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 
-export default function handler(req, res) {
+
+export default async function handler(req, res) {
+
+  const db = getFirestore(app);
+  const tokenRef = doc(db, "token", "token");
+  const docSnap = await getDoc(tokenRef);
+  let token;
+  if (docSnap.exists()) {
+      token = docSnap.data().token;
+  } else {
+    console.log("TOKEN NOT FOUND IN FIREBASE");
+  }
+  
   let { propertyID, checkIn, checkOut} = req.body;
 
-  
   const options = {
     method: "GET",
     headers: {

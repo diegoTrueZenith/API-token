@@ -1,10 +1,25 @@
-import { token } from './token';
+import { initializeApp } from "firebase/app";
+import { firebaseConfig } from "../firebase";
+const app = initializeApp(firebaseConfig);
+import {doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 
-let todayte = new Date().toISOString().slice(0, 10);
-const today = new Date();
-const nextYear = new Date(today.getFullYear() + 2, today.getMonth(), today.getDate()).toISOString().slice(0, 10);
 
-export default function handler(req, res) {  
+export default async function handler(req, res) {
+
+  const db = getFirestore(app);
+  const tokenRef = doc(db, "token", "token");
+  const docSnap = await getDoc(tokenRef);
+  let token;
+  if (docSnap.exists()) {
+      token = docSnap.data().token;
+  } else {
+    console.log("TOKEN NOT FOUND IN FIREBASE");
+  }
+
+  let todayte = new Date().toISOString().slice(0, 10);
+  const today = new Date();
+  const nextYear = new Date(today.getFullYear() + 2, today.getMonth(), today.getDate()).toISOString().slice(0, 10);
+
     let { propertyID } = req.body;
     
     
