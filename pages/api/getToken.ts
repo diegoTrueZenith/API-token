@@ -42,7 +42,7 @@ export default async function handler(req, res) {
 
     async function updateToken(token){
         console.log("=== NEW TOKEN UPDATED  ===");
-        await updateDoc(tokenRef, {token: token.access_token});
+        await updateDoc(tokenRef, {token: token});
         console.log(token);
     }
 }
