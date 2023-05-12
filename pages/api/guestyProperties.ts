@@ -38,7 +38,7 @@ export default async function handler(req, res) {
       .then(response=>{
         if(response.error){
           console.log("Get New Token");
-          fetch('https://vercel.com/diegotruezenith/api-token/getToken');
+          fetch('https://vercel.com/diegotruezenith/api/getToken');
           res.status(200).json("reload")
         } else {
           res.status(200).json({response})
